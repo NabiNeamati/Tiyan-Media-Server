@@ -3,10 +3,12 @@
  
  Media server - wowza & nimble killer :)
 
-Run the following commands on a freshly installed Ubuntu 16 Server on digital ocean or elsewhere
+Run the following commands on a freshly installed Ubuntu 18 Server
 
 sudo -s
+
 apt-get install curl -y
+
 curl -sL https://raw.githubusercontent.com/upggr/IELKO-MEDIA-SERVER/master/install.sh | sudo bash -
 
 
