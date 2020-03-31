@@ -3,6 +3,8 @@
 sudo apt-get update -y
 sudo apt-get install livestreamer build-essential libpcre3 libpcre3-dev libssl-dev  libpcre3 git  software-properties-common php-fpm php-mysql libsybdb5 php-gettext libgd-dev libgeoip-dev libxslt-dev zlibc zlib1g zlib1g-dev -y
 sudo apt-get install ffmpeg  -y
+sudo apt-get install stunnel4 -y
+
 mkdir ~/working
 mkdir ~/working/Tiyan
 mkdir ~/working/nginx-rtmp-module
@@ -33,7 +35,8 @@ ufw allow 1935
 iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 iptables -I INPUT -p tcp --dport 1935 -j ACCEPT
 iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
-rm /usr/local/nginx/html/*
+#rm /usr/local/nginx/html/*
+cp ~/working/Tiyan/www/crossdomain.xml /usr/local/nginx/html/crossdomain.xml
 #cp ~/working/Tiyan/www/index.php /usr/local/nginx/html/index.php
 #cp ~/working/Tiyan/www/ielko-media-server.css /usr/local/nginx/html/ielko-media-server.css
 #cp ~/working/Tiyan/www/stream.xml /usr/local/nginx/html/stream.xml
@@ -43,10 +46,20 @@ rm /usr/local/nginx/html/*
 #ip=$(curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//' )
 #sed -i -- 's/replaceip/'"$ip"'/g' /usr/local/nginx/html/stream.xml
 #sed -i -- 's/replaceip/'"$ip"'/g' /usr/local/nginx/html/index.php
+
+#enable Stunel for Support RTMPS 
+# source: https://sites.google.com/view/facebook-rtmp-to-rtmps/home
+rm -rf /etc/default/stunnel4
+cp ~/working/Tiyan/stunnel/stunnel4 /etc/default/
+cp ~/working/Tiyan/stunnel/stunnel.conf /etc/stunnel/
+sudo systemctl enable stunnel4.service
+sudo systemctl restart stunnel4.service
+
+
 #
 ln -s /usr/local/nginx/sbin/nginx nginx
 sudo service nginx start
 sudo rm -rf ~/working
 sudo chmod -R ugo+rwx /usr/local/nginx
-sudo history -c
+history -c
 shutdown -r now
