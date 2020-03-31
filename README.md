@@ -4,8 +4,10 @@
  Media server - wowza & nimble killer :)
 
 Run the following commands on a freshly installed Ubuntu 18 Server
+
 ``
 sudo -s
+``
 ``
 apt-get install curl -y
 ``
