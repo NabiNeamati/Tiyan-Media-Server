@@ -4,13 +4,13 @@
  Media server - wowza & nimble killer :)
 
 Run the following commands on a freshly installed Ubuntu 18 Server
-
+``
 sudo -s
-
+``
 apt-get install curl -y
-
+``
 curl -sL https://raw.githubusercontent.com/upggr/IELKO-MEDIA-SERVER/master/install.sh | sudo bash -
-
+``
 
 ++++ receiving streams ++++
 Stream to rtmp://ipofyourserver/hls/stream1   (or any other streamname other than stream1)
