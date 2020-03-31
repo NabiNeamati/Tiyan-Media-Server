@@ -34,17 +34,19 @@ iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 iptables -I INPUT -p tcp --dport 1935 -j ACCEPT
 iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
 rm /usr/local/nginx/html/*
-cp ~/working/Tiyan/www/index.php /usr/local/nginx/html/index.php
-cp ~/working/Tiyan/www/ielko-media-server.css /usr/local/nginx/html/ielko-media-server.css
-cp ~/working/Tiyan/www/stream.xml /usr/local/nginx/html/stream.xml
-cp ~/working/Tiyan/www/testing.png /usr/local/nginx/html/testing.png
-cp ~/working/Tiyan/www/favicon.ico /usr/local/nginx/html/favicon.ico
-git clone https://github.com/upggr/ielko-video-player /usr/local/nginx/html/player
-ip=$(curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//' )
-sed -i -- 's/replaceip/'"$ip"'/g' /usr/local/nginx/html/stream.xml
-sed -i -- 's/replaceip/'"$ip"'/g' /usr/local/nginx/html/index.php
+#cp ~/working/Tiyan/www/index.php /usr/local/nginx/html/index.php
+#cp ~/working/Tiyan/www/ielko-media-server.css /usr/local/nginx/html/ielko-media-server.css
+#cp ~/working/Tiyan/www/stream.xml /usr/local/nginx/html/stream.xml
+#cp ~/working/Tiyan/www/testing.png /usr/local/nginx/html/testing.png
+#cp ~/working/Tiyan/www/favicon.ico /usr/local/nginx/html/favicon.ico
+#git clone https://github.com/upggr/ielko-video-player /usr/local/nginx/html/player
+#ip=$(curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//' )
+#sed -i -- 's/replaceip/'"$ip"'/g' /usr/local/nginx/html/stream.xml
+#sed -i -- 's/replaceip/'"$ip"'/g' /usr/local/nginx/html/index.php
 #
 ln -s /usr/local/nginx/sbin/nginx nginx
 sudo service nginx start
 sudo rm -rf ~/working
+sudo chmod -R ugo+rwx /usr/local/nginx
+sudo history -c
 shutdown -r now
