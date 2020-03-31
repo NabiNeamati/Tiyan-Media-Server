@@ -12,7 +12,7 @@ sudo -s
 apt-get install curl -y
 ```
 ```
-curl -sL https://raw.githubusercontent.com/upggr/IELKO-MEDIA-SERVER/master/install.sh | sudo bash -
+curl -sL https://raw.githubusercontent.com/NabiNeamati/Tiyan-Media-Server/master/install.sh | sudo bash -
 ```
 
 ++++ receiving streams ++++
