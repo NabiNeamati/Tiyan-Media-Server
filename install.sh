@@ -12,20 +12,27 @@ mkdir ~/working/ngx_devel_kit
 mkdir ~/working/set-misc-nginx-module
 mkdir ~/working/nginx
 mkdir ~/working/nginx-hmac-secure-link
+mkdir ~/working/nginx-vod-module
 git clone https://github.com/NabiNeamati/Tiyan-Media-Server.git ~/working/Tiyan
 git clone https://github.com/sergey-dryabzhinsky/nginx-rtmp-module.git ~/working/nginx-rtmp-module
 git clone https://github.com/openresty/set-misc-nginx-module.git ~/working/set-misc-nginx-module
 git clone https://github.com/simpl/ngx_devel_kit.git ~/working/ngx_devel_kit
 git clone https://github.com/nginx-modules/nginx-hmac-secure-link.git ~/working/nginx-hmac-secure-link
+git clone https://github.com/kaltura/nginx-vod-module.git ~/working/nginx-vod-module
+
 wget http://nginx.org/download/nginx-1.16.1.tar.gz -P ~/working
 tar -xf ~/working/nginx-1.16.1.tar.gz -C ~/working/nginx --strip-components=1
 rm ~/working/nginx-1.16.1.tar.gz
 cd ~/working/nginx
 #./configure --with-http_ssl_module --add-module=../nginx-rtmp-module --add-module=../ngx_devel_kit --add-module=../set-misc-nginx-module --add-module=../nginx-hmac-secure-link
-./configure --with-http_ssl_module --add-module=../nginx-rtmp-module --add-module=../ngx_devel_kit --add-module=../set-misc-nginx-module --with-debug  --with-cc-opt="-Wimplicit-fallthrough=0"
+./configure --with-http_ssl_module  --with-http_secure_link_module --add-module=../nginx-rtmp-module --add-module=../ngx_devel_kit --add-module=../set-misc-nginx-module --add-module=../nginx-vod-module --with-file-aio --with-threads --with-debug  --with-cc-opt="-Wimplicit-fallthrough=0"
 make -j 2
 sudo make install
 cp ~/working/Tiyan/conf/nginx.conf /usr/local/nginx/conf/nginx.conf
+cp ~/working/Tiyan/conf/mime.types /usr/local/nginx/conf/mime.types
+mkdir /usr/local/nginx/conf/vod
+cp ~/working/Tiyan/conf/vod/vod.conf /usr/local/nginx/conf/vod/vod.conf
+cp ~/working/Tiyan/conf/vod/vod.mime.types /usr/local/nginx/conf/vod/vod.mime.types
 cp ~/working/Tiyan/conf/nginx.service /etc/init.d/nginx
 sudo chmod +x /etc/init.d/nginx
 sudo /usr/sbin/update-rc.d -f nginx defaults

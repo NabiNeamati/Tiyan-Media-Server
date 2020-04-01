@@ -99,3 +99,32 @@ just nano /usr/local/nginx/conf/nginx.conf
 ```
 Replace line : "#server_name yourdomain.com www.yourdomain.com xxx.xxx.xxx.xxx" with your domain name or ip etc (and remove the #) :)
 ```
+
+## Enable VOD 
+uncomment the below lines 
+
+```	#include vod/vod.mime.types;```
+
+```
+# VOD Location 
+#include vod/vod.conf
+```
+
+Upload your MP4 Files to bellow Directory 
+
+```
+/usr/local/nginx/html
+```
+
+```
+101_1.mp4
+101_2.mp4
+101_3.mp4
+```
+Your HLS VOD playlist as bellow 
+```
+HLS URL
+
+http://ip_address/hls/101_1.mp4/index.m3u8
+http://ip_address/hls/101_,1,2,3,.mp4.urlset/master.m3u8
+```
