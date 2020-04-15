@@ -1,7 +1,7 @@
 #!/bin/bash
 #sudo add-apt-repository ppa:mc3man/trusty-media -y
 sudo apt-get update -y
-sudo apt-get install livestreamer build-essential libpcre3 libpcre3-dev libssl-dev  libpcre3 git  software-properties-common php-fpm php-mysql libsybdb5 php-gettext libgd-dev libgeoip-dev libxslt-dev zlibc zlib1g zlib1g-dev build-essential linux-kernel-headers -y
+sudo apt-get install livestreamer build-essential libpcre3 libpcre3-dev libssl-dev git software-properties-common php-fpm php-mysql libsybdb5 php-gettext libgd-dev libgeoip-dev libxslt-dev zlibc zlib1g zlib1g-dev build-essential linux-kernel-headers -y
 sudo apt-get install ffmpeg  -y
 sudo apt-get install stunnel4 -y
 
